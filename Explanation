@@ -1,0 +1,12 @@
+// this is how function is define in python
+    def addition(first , second):
+        temp=first+second;
+        print(temp);
+        return temp;
+
+//  to call the function do as usual.
+    sol = addition(10,15)
+
+// List
+    list_name=['First Name','LAst Name',12]
+    empty_list=[]
