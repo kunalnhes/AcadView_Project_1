@@ -1,10 +1,10 @@
 # import statments
-from spy_details import spy_name, spy_salutation, spy_rating, spy_age;
-import start_chat
+from spy_details import spy;
+from start_chat import start_chat;
 print "Let's get started"
-q="Do you want to continue as "+spy_salutation+" "+spy_name+" Y,y or N,n"
+q="Do you want to continue as "+spy['salutation']+" "+spy['name']+" Y,y or N,n"
 existing = raw_input(q);
-if(existing == 'N' or existing == 'n'):
+if(existing.upper() == 'N'):
     spy_name = raw_input("Please enter your name: ")
     #Concatenation of salutation with the name and condition checking.
     if len(spy_name)>0:
@@ -22,21 +22,26 @@ if(existing == 'N' or existing == 'n'):
             print type(spy_age);
             if spy_age>12 and spy_age<50:
                 print "you are eligible";
+                spy_rating = float(raw_input("Enter your rating:"));
+                if (spy_rating >= 4.5):
+                    print "Brilliant Spy.";
+                elif (spy_rating >= 3.5 and spy_rating < 4.5):
+                    print "You are good Spy.";
+                elif (spy_rating >= 2.5 and spy_rating < 3.5):
+                    print "you can do better."
+                else:
+                    print "You need to work hard.";
+                spy_online = True;
             else:
                 print "You are not eligible";
-            spy_rating = float(raw_input("Enter your rating:"));
-            if(spy_rating>=4.5):
-                print "Brilliant Spy.";
-            elif (spy_rating>=3.5 and spy_rating<4.5):
-                print "You are good Spy.";
-            elif (spy_rating>=2.5 and spy_rating<3.5):
-                print "you can do better."
-            else:
-                print "You need to work hard.";
-            spy_online=True;
-            print "-----------------------------------------------------------------------------------------------------"
-            print "Authentication complete. Welcome "+spy_name+"\n"+"age: ",spy_age,"\nRating: ",spy_rating,"\nOnline: ",spy_online ;
-            start_chat.start_chat(spy_name, spy_age, spy_rating);
+            if(spy_online==True):
+                print "-----------------------------------------------------------------------------------------------------"
+                print "Authentication complete. Welcome "+spy_name+"\n"+"age: ",spy_age,"\nRating: ",spy_rating,"\nOnline: ",spy_online ;
+                spy['name']=spy_name;
+                spy['age']=spy_age;
+                spy['rating']=spy_rating;
+                spy['is_online']=spy_online;
+                start_chat(spy);
         else:
             print "You did not entered your salutation. Please retry!"
 
@@ -50,6 +55,6 @@ if(existing == 'N' or existing == 'n'):
         #%.2f for flaot with two decimals......
 elif (existing == 'Y' or existing == 'y'):
     print "Okay lets get started"
-    start_chat.start_chat(spy_name, spy_age, spy_rating);
+    start_chat(spy);
 else:
     print "Wrong input";

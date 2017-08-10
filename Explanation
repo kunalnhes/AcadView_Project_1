@@ -10,3 +10,10 @@
 // List
     list_name=['First Name','LAst Name',12]
     empty_list=[]
+
+// Dictionary
+    student={
+        'python': "A",
+        'C': "B",
+        'Java': "A"
+    }
