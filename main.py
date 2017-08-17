@@ -5,11 +5,11 @@ print "Let's get started"
 q="Do you want to continue as "+spy['salutation']+" "+spy['name']+" Y,y or N,n"
 existing = raw_input(q);
 if(existing.upper() == 'N'):
+    error=None
     spy_name = raw_input("Please enter your name: ")
     #Concatenation of salutation with the name and condition checking.
     if len(spy_name)>0:
         salutation = raw_input("Please enter your salutation: ")
-
         if len(salutation)>0:
             spy_name = salutation + " " + spy_name
             print "Welcome "+spy_name;
@@ -30,31 +30,35 @@ if(existing.upper() == 'N'):
                 elif (spy_rating >= 2.5 and spy_rating < 3.5):
                     print "you can do better."
                 else:
-                    print "You need to work hard.";
+                    error ="You need to work hard.";
                 spy_online = True;
             else:
-                print "You are not eligible";
+                error= "You are not eligible"
             if(spy_online==True):
                 print "-----------------------------------------------------------------------------------------------------"
-                print "Authentication complete. Welcome "+spy_name+"\n"+"age: ",spy_age,"\nRating: ",spy_rating,"\nOnline: ",spy_online ;
-                spy['name']=spy_name;
-                spy['age']=spy_age;
-                spy['rating']=spy_rating;
-                spy['is_online']=spy_online;
-                start_chat(spy);
         else:
-            print "You did not entered your salutation. Please retry!"
+            error= "You did not entered your salutation. Please retry!"
 
     else:
-        print "You did not entered your name. Please retry!"
+        error= "You did not entered your name. Please retry!"
     # to print variable we do like:
         # user_name="Kunal Janghel"
         # print "My name is %s" %(user_name);
         #%d for integer
         #%f for float
         #%.2f for flaot with two decimals......
+    if(error == None):
+        print "Authentication complete. Welcome " + spy_name + "\n" + "age: ", spy_age, "\nRating: ", spy_rating, "\nOnline: ", spy_online;
+        spy['name'] = spy_name;
+        spy['age'] = spy_age;
+        spy['rating'] = spy_rating;
+        spy['is_online'] = spy_online;
+        start_chat(spy);
+    else:
+        print ""+error
 elif (existing == 'Y' or existing == 'y'):
     print "Okay lets get started"
+    print "Authentication complete. Welcome " + spy['name'] + "\n" + "age: ", spy['age'], "\nRating: ", spy['rating'], "\nOnline: ", spy['is_online'];
     start_chat(spy);
 else:
     print "Wrong input";
