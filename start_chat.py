@@ -1,17 +1,26 @@
 #start_chat() definition
-from friends import add_friends, friend_list;
-status_message=["Janghel!! Kunal Janghel.","OO7","Hey! there im using python"];
+from read_message import read_message
+from friends import add_friends
+from select_friend import select_friend
+from send_message import send_message
+from spy_details import friend_list
+status_message=["Janghel!! Kunal Janghel.","OO7","Hey! there im using python"]
+
 def start_chat(spy):
-    menu();
-    choice = int(raw_input("your choice:"));
+    menu()
+    choice = int(raw_input("your choice:"))
     while(choice != 5):
         if (choice == 1):
-            cur_status= None ;
+            cur_status= None
             cur_status=add_status(cur_status)
             print "result: "+cur_status;
         elif (choice == 2):
             add_friends();
             print friend_list;
+        elif (choice == 3):
+            send_message()
+        elif (choice == 4):
+            read_message()
         else:
             print "wrong choice try again"
         menu();
@@ -21,7 +30,7 @@ def menu():
     print "Choose from the following options:"
     print "1. Add a status Update"
     print "2. Add Friends"
-    print "3. View Messages"
+    print "3. Select a friend"
     print "4. Read messages"
     print "5. Exit"
 
@@ -43,4 +52,3 @@ def add_status(current_status):
         return "changed status: "+new_status;
     else:
         return "Wrong choice"
-

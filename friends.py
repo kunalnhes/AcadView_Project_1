@@ -1,6 +1,11 @@
-from spy_details import friends;
-friend_list=[];
+from spy_details import friend_list
 def add_friends():
+    friends = {
+        'name': None,
+        'age': None,
+        'rating': None,
+        'is_online': None
+    }
     error="";
     new_name = raw_input("Please enetr your friends name:")
     if len(new_name)<=0 :

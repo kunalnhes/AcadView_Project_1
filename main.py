@@ -1,6 +1,7 @@
 # import statments
-from spy_details import spy;
-from start_chat import start_chat;
+from spy_details import spy
+from start_chat import start_chat
+
 print "Let's get started"
 q="Do you want to continue as "+spy['salutation']+" "+spy['name']+" Y,y or N,n"
 existing = raw_input(q);
@@ -12,7 +13,7 @@ if(existing.upper() == 'N'):
         salutation = raw_input("Please enter your salutation: ")
         if len(salutation)>0:
             spy_name = salutation + " " + spy_name
-            print "Welcome "+spy_name;
+            print "Welcome "+spy_name
             print "Okay " + spy_name+ "!! I would like to know more about you "
             spy_age = 0;
             spy_rating = 0.0;
@@ -31,7 +32,7 @@ if(existing.upper() == 'N'):
                     print "you can do better."
                 else:
                     error ="You need to work hard.";
-                spy_online = True;
+                sspy_online = True;
             else:
                 error= "You are not eligible"
             if(spy_online==True):

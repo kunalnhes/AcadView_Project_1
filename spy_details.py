@@ -16,3 +16,5 @@ friends={
     'rating':None,
     'is_online':None
 }
+
+friend_list=[]
