@@ -13,14 +13,10 @@ def send_message():
 
     #TODO function Logic
     friend_choice = select_friend();
-    time=datetime.now();
-    print (time);
-    type(time);
     if (friend_choice == "error"):
         print Fore.RED+"wrong choice"+Fore.RESET
     else:
         friend_choice = int(friend_choice);
-        print friend_choice;
         while True:
             original_image=raw_input("Provide name of image to hide message into")
             if re.match(imageexpr,original_image,flags=0)!=None:
@@ -29,7 +25,7 @@ def send_message():
                 print Fore.RED+"Image name must be alpha numeric and image extension must be .jpg"+Fore.RESET
         while True:
             output_image = raw_input("Provide the name of output image")
-            if re.match(imageexpr,original_image,flags=0)!=None:
+            if re.match(imageexpr,output_image,flags=0)!=None:
                 break;
             else:
                 print Fore.RED + "Image name must be alpha numeric and image extension must be .jpg" + Fore.RESET

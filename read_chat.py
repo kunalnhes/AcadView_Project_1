@@ -10,7 +10,7 @@ init()
 def read_chat():
     choice=select_friend()
     if choice == "error":
-        print "Wrong choice"
+        print Fore.RED+"Wrong choice"+Fore.RESET
     else:
         print (Fore.GREEN + "Messages sent by you is shown in green color \n" + Fore.RED + "Messages received and read by your friend is shown in red color:")
         choice=int(choice)
