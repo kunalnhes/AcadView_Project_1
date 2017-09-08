@@ -1,14 +1,23 @@
 # import statments
-from spy_details import spy
 from start_chat import start_chat
-import re
+import re # use for regular expression matching
+from spy_details_class import Spy_Details
+from colorama import init,Fore
 
-print "Let's get started"
-q="Do you want to continue as "+spy['salutation']+" "+spy['name']+" Y,y or N,n"
-existing = raw_input(q);
+init()
+
+# Predefined expressions for validation purpose such as name cannnot contain digits etc
 nameexpr="^[a-zA-Z]+[\sa-zA-Z]*$";
 ageexpr="^[0-9]+$"
 ratingexpr="^[0-9]+\.[0-9]+$"
+
+# creating object of spy details and storing it in sd object
+sd=Spy_Details();
+
+# User is asked for a choice yes or No. if the user presses yes it continues with the default user or else it ask for the details of the new user
+print ("Let's get started with Spy Chat" + Fore.RESET)
+q=Fore.CYAN+ "Do you want to continue as "+sd.get_salutation()+" "+sd.get_name()+" Y,y or N,n"+ Fore.RESET
+existing = raw_input(q);
 if(existing.upper() == 'N'):
     error=None
     while True:
@@ -16,11 +25,10 @@ if(existing.upper() == 'N'):
         if(re.match(nameexpr, spy_name, flags=0) != None):
             break
         else:
-            print("Name can only contain alphabets, name cannot be null and name cannot start with space. Please provide a valid name.");
+            print(Fore.RED+"Name can only contain alphabets, name cannot be null and name cannot start with space. Please provide a valid name."+Fore.RESET);
     #Concatenation of salutation with the name and condition checking.
     salutation = raw_input("Please enter your salutation: ")
-    spy_name = salutation + " " + spy_name
-    print "Welcome "+spy_name
+    print "Welcome "+salutation+" "+spy_name
     print "Okay " + spy_name+ "!! I would like to know more about you "
     spy_age = 0;
     spy_rating = 0.0;
@@ -31,7 +39,7 @@ if(existing.upper() == 'N'):
             spy_age=int(spy_age);
             break
         else:
-            print("Age can only be a integer. Please re enter your age:");
+            print(Fore.RED+"Age can only be a integer. Please re enter your age:"+Fore.RESET);
     if (spy_age>12 and spy_age<50):
         print "you are eligible";
         while True:
@@ -40,7 +48,7 @@ if(existing.upper() == 'N'):
                 spy_rating=float(spy_rating)
                 break
             else:
-                print("Please provide a rating in decimal format. like 4.0 or 4.4 etc..!");
+                print(Fore.RED+"Please provide a rating in decimal format. like 4.0 or 4.4 etc..!"+Fore.RESET);
         if (spy_rating >= 4.5):
             print "Brilliant Spy.";
         elif (spy_rating >= 3.5 and spy_rating < 4.5):
@@ -62,17 +70,14 @@ if(existing.upper() == 'N'):
         #%f for float
         #%.2f for flaot with two decimals......
     if(error == None):
-        print "Authentication complete. \n Welcome " + spy_name + "\n" + "age: ", spy_age, "\nRating: ", spy_rating, "\nOnline: ", spy_online;
-        spy['name'] = spy_name;
-        spy['age'] = spy_age;
-        spy['rating'] = spy_rating;
-        spy['is_online'] = spy_online;
-        start_chat(spy);
+        sd.set_details(spy_name,salutation,spy_age,spy_rating,spy_online)
+        print Fore.RED+"Authentication complete." + Fore.RESET + "\nWelcome " + sd.get_name() + "\n" + "age: ", sd.get_age(), "\nRating: ", sd.get_rating(), "\nOnline: ", sd.get_online();
+        start_chat(sd);
     else:
-        print ""+error
+        print (Fore.RED+error+Fore.RESET)
 elif (existing == 'Y' or existing == 'y'):
     print "Okay lets get started"
-    print "Authentication complete. \nWelcome " + spy['name'] + "\n" + "age: ", spy['age'], "\nRating: ", spy['rating'], "\nOnline: ", spy['is_online'];
-    start_chat(spy);
+    print Fore.GREEN+"Authentication complete." + Fore.RESET + "\nWelcome " + sd.get_name() + "\n" + "age: ", sd.get_age(), "\nRating: ", sd.get_rating(), "\nOnline: ", sd.get_online();
+    start_chat(sd);
 else:
-    print "Wrong input";
+    print (Fore.GREEN+"Wrong input"+Fore.RED)

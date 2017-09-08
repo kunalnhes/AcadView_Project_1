@@ -17,3 +17,18 @@
         'C': "B",
         'Java': "A"
     }
+
+//Database in Python
+//Colours in Python
+//Class in Python
+    //Constructor in python
+    x=ClassName(a, b, c);
+     self keyword is like this keyword. we need not pass any parameter for this
+        class ClassName:
+
+            def __init__(self, val1, val2, val3):
+                self.var1=val1
+                self.var2=val2
+                self.var3=val3
+     //Inheritance in Python
+        class SubClassName (ParentClassName):
