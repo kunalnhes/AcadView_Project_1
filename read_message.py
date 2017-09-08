@@ -3,6 +3,7 @@ from select_friend import select_friend
 from spy_details import friend_list
 from datetime import datetime
 import re
+from emergency_message import emergency
 from colorama import init,Fore
 
 init()
@@ -22,6 +23,9 @@ def read_message():
         try:
             secret_message=Steganography.decode(encrypted_image)
             print "The secret message is: "+secret_message
+            for i in emergency:
+                if i==secret_message.upper():
+                    print Fore.RED+"Your emergency message has been handled"+Fore.RESET
             chats=friend_list[sender].get_chats()
             all_message=secret_message
             for chat in chats:
@@ -32,7 +36,7 @@ def read_message():
                 print Fore.RED+"Error!! Spy speaking too much. removing the spy from friend list...."+Fore.RESET
                 del friend_list[sender]
             else:
-                print Fore.GREEN+"Hello you are speaking fine." + str(avg_words)+Fore.RESET
+                print Fore.GREEN+"Hello you are speaking fine. your average words is: " + str(avg_words)+Fore.RESET
                 new_chat = {
                     'message': secret_message,
                     'time': datetime.now(),

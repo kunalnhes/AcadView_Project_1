@@ -1,8 +1,9 @@
 from select_friend import select_friend
 from steganography.steganography import Steganography
-from datetime import datetime;
-from spy_details import friend_list;
-from colorama import init,Fore;
+from datetime import datetime
+from spy_details import friend_list
+from colorama import init,Fore
+from emergency_message import emergency
 import re
 
 init()
@@ -49,5 +50,8 @@ def send_message():
             # saving the dictionary
             friend_list[friend_choice].get_chats().append(new_chat)
             print "Message saved successfully"+Fore.RESET
+            for i in emergency:
+                if i==text.upper():
+                    print Fore.RED+"Your emergency message has been sent. You need not to worry."+Fore.RESET
         except:
             print Fore.RED+"NO such image exist in the module."+Fore.RESET
