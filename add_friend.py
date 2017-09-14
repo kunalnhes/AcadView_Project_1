@@ -40,7 +40,7 @@ def add_friends():
     if new_age<=12 or new_age>=50:
         error = error+" "+"Age not supported";
     while True:
-        new_rating = raw_input("Enter your rating:");
+        new_rating = raw_input("Enter your friends rating:");
         if (re.match(ratingexpr, new_rating, flags=0) != None):
             spy_rating = float(new_rating)
             break

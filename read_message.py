@@ -33,10 +33,10 @@ def read_message():
                     all_message=all_message+" "+chat['message']
             avg_words=len(all_message.split())
             if(avg_words>100):
-                print Fore.RED+"Error!! Spy speaking too much. removing the spy from friend list...."+Fore.RESET
+                print Fore.RED+"Error!! Spy speaking too much. Removing the spy from friend list...."+Fore.RESET
                 del friend_list[sender]
             else:
-                print Fore.GREEN+"Hello you are speaking fine. your average words is: " + str(avg_words)+Fore.RESET
+                print Fore.GREEN+"Hello you are speaking fine. your average words speaked till date is: " + str(avg_words)+Fore.RESET
                 new_chat = {
                     'message': secret_message,
                     'time': datetime.now(),

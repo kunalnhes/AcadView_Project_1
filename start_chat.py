@@ -6,6 +6,7 @@ from read_chat import read_chat
 import re
 from colorama import Fore,init
 from add_friend import add_friends
+from add_status import add_status,status_message
 
 init()
 
@@ -13,7 +14,7 @@ init()
 nameexpr = "^[a-zA-Z0-9]+[\s0-9a-zA-Z]*$";
 choexpr = "^[0-9]+$"
 
-status_message=[]
+
 
 
 def start_chat(spy):
@@ -65,36 +66,9 @@ def choose():
 def menu():
     print "Choose from the following options:"
     print "1. Add a status Update"
-    print "2. Add Friends"
+    print "2. Add new Friends"
     print "3. Send message to a friend"
-    print "4. Read message"
-    print "5. Read chat history"
+    print "4. Read message of a friend"
+    print "5. Read chat history of a friend"
     print "6. Close the application"
 
-def add_status(current_status):
-    print "\nEnter 1 to choose from the previous status and 2 to add new status: "
-    ch=choose()
-    if(ch==1):
-        pos=1
-        for i in status_message:
-            print pos,". "+i;
-            pos=pos+1;
-        if not status_message:
-            return "Sorry. No previous history available"
-        else:
-            msg_select=choose()
-            if(msg_select<pos):
-                return msg_select;
-            else:
-                return "Wrong choice"
-    elif(ch==2):
-        while True:
-            new_status = raw_input("Enter your new status: ");
-            if(re.match(nameexpr,new_status,flags=0)!=None):
-                status_message.append(new_status);
-                break
-            else:
-                print "Please enter some status."
-        return len(status_message);
-    else:
-        return Fore.RED+"Wrong choice"+Fore.RESET
