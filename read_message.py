@@ -16,13 +16,14 @@ def read_message():
     else:
         while(True):
             encrypted_image=raw_input("Please provide the encryted image to decode")
-            if(re.match(imageexpr,encrypted_image,flags=0)!=None):
+            if re.match(imageexpr,encrypted_image,flags=0)is not None:
                 break
             else:
                 print Fore.RED+"Image name must be alpha numeric and image extension must be .jpg"+Fore.RESET
         try:
             secret_message=Steganography.decode(encrypted_image)
             print "The secret message is: "+secret_message
+            # emergency messages
             for i in emergency:
                 if i==secret_message.upper():
                     print Fore.RED+"Your emergency message has been handled"+Fore.RESET

@@ -1,1 +1,1 @@
-emergency=["SOS","SAVE ME","EMERGENCY","ALERT","DANGER"]
+emergency = ["SOS","SAVE ME","EMERGENCY","ALERT","DANGER"]

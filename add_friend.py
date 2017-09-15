@@ -11,19 +11,12 @@ ratingexpr="^[0-9]+\.[0-9]+$"
 
 
 def add_friends():
-    sd = Spy_Details();
-    sd.clear_chats();
-    friends = {
-        'name': None,
-        'age': None,
-        'rating': None,
-        'is_online': None,
-        'chats':[]
-    }
-    error="";
+    sd = Spy_Details();  # new spy details object
+    sd.clear_chats();  # clears the chat list before adding new spy
+    error = "";
     while True:
         new_name = raw_input("Please enter your friends name:")
-        if(re.match(nameexpr, new_name, flags=0) != None):
+        if re.match(nameexpr, new_name, flags=0) is not None:
             break
         else:
             print(Fore.RED+"Name can only contain alphabets, name cannot be null and name cannot start with space. Please provide a valid name."+Fore.RESET);
@@ -32,7 +25,7 @@ def add_friends():
     new_salutation = raw_input("How do you want to address your friend")
     while True:
         new_age = raw_input("Please enter the age:")
-        if re.match(ageexpr, new_age, flags=0) != None:
+        if re.match(ageexpr, new_age, flags=0) is not None:
             new_age=int(new_age);
             break
         else:
@@ -41,7 +34,7 @@ def add_friends():
         error = error+" "+"Age not supported";
     while True:
         new_rating = raw_input("Enter your friends rating:");
-        if (re.match(ratingexpr, new_rating, flags=0) != None):
+        if re.match(ratingexpr, new_rating, flags=0) is not None:
             spy_rating = float(new_rating)
             break
         else:

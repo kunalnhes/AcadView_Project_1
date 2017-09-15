@@ -15,8 +15,6 @@ nameexpr = "^[a-zA-Z0-9]+[\s0-9a-zA-Z]*$";
 choexpr = "^[0-9]+$"
 
 
-
-
 def start_chat(spy):
     cur_status = -1
     menu()
@@ -48,6 +46,8 @@ def start_chat(spy):
         menu();
         choice = choose()
 
+
+# shows the list of friends available in friend_list
 def show_friends():
     pos=1;
     for i in friend_list:
@@ -55,6 +55,7 @@ def show_friends():
         pos = pos + 1;
 
 
+# function which is used to return correct integer choice
 def choose():
     while True:
         choice=raw_input("Enter your choice: ")
@@ -63,6 +64,7 @@ def choose():
         else:
             print (Fore.RED+"Please enter only integer choice."+Fore.RESET)
 
+#function which is used to print all the menu options for a spy
 def menu():
     print "Choose from the following options:"
     print "1. Add a status Update"

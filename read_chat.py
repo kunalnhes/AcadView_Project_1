@@ -8,6 +8,7 @@ init()
 
 
 def read_chat():
+    # selecting a friend from the list
     choice=select_friend()
     if choice == "error":
         print Fore.RED+"Wrong choice"+Fore.RESET

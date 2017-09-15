@@ -18,15 +18,15 @@ sd=Spy_Details();
 print ("Let's get started with Spy Chat" + Fore.RESET)
 q=Fore.CYAN+ "Do you want to continue as "+sd.get_salutation()+" "+sd.get_name()+" Y,y or N,n"+ Fore.RESET
 existing = raw_input(q);
+#if user wants to enter as a new user than start from  here
 if(existing.upper() == 'N'):
     error=None
     while True:
         spy_name = raw_input("Please enter your name: ")
-        if(re.match(nameexpr, spy_name, flags=0) != None):
+        if re.match(nameexpr, spy_name, flags=0) is not None:
             break
         else:
             print(Fore.RED+"Name can only contain alphabets, name cannot be null and name cannot start with space. Please provide a valid name."+Fore.RESET);
-    #Concatenation of salutation with the name and condition checking.
     salutation = raw_input("Please enter your salutation: ")
     print "Welcome "+salutation+" "+spy_name
     print "Okay " + spy_name+ "!! I would like to know more about you "
@@ -35,7 +35,7 @@ if(existing.upper() == 'N'):
     spy_online = False;
     while True:
         spy_age=raw_input("Enter your age: ");
-        if re.match(ageexpr, spy_age, flags=0) != None:
+        if re.match(ageexpr, spy_age, flags=0) is not None:
             spy_age=int(spy_age);
             break
         else:
@@ -44,7 +44,7 @@ if(existing.upper() == 'N'):
         print "you are eligible";
         while True:
             spy_rating = raw_input("Enter your rating:");
-            if (re.match(ratingexpr, spy_rating, flags=0) != None):
+            if re.match(ratingexpr, spy_rating, flags=0) is not None:
                 spy_rating=float(spy_rating)
                 break
             else:
@@ -71,13 +71,14 @@ if(existing.upper() == 'N'):
         #%.2f for flaot with two decimals......
     if(error == None):
         sd.set_details(spy_name,salutation,spy_age,spy_rating,spy_online)
-        print Fore.RED+"Authentication complete." + Fore.RESET + "\nWelcome " + sd.get_name() + "\n" + "age: ", sd.get_age(), "\nRating: ", sd.get_rating(), "\nOnline: ", sd.get_online();
+        print Fore.GREEN+"Authentication complete." + Fore.RESET + "\nWelcome " + sd.get_name() + "\n" + "age: ", sd.get_age(), "\nRating: ", sd.get_rating(), "\nOnline: ", sd.get_online();
         start_chat(sd);
     else:
         print (Fore.RED+error+Fore.RESET)
+#if user wants to continue with the default user
 elif (existing == 'Y' or existing == 'y'):
-    print "Okay lets get started"
     print Fore.GREEN+"Authentication complete." + Fore.RESET + "\nWelcome " + sd.get_name() + "\n" + "age: ", sd.get_age(), "\nRating: ", sd.get_rating(), "\nOnline: ", sd.get_online();
     start_chat(sd);
+#if user enters characters other than y,Y,n,N! then exit with incorrect input mmessage
 else:
     print (Fore.GREEN+"Wrong input"+Fore.RED)
